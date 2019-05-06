@@ -23,7 +23,7 @@
 #include <inttypes.h>
 #include <stdio.h> // for size_t
 
-#include "WString.h"
+//#include "WString.h"  // removed by Michael
 #include "Printable.h"
 
 #define DEC 10
@@ -48,22 +48,26 @@ class Print
     int getWriteError() { return write_error; }
     void clearWriteError() { setWriteError(0); }
   
+
     virtual size_t write(uint8_t) = 0;
-    size_t write(const char *str) {
+
+    virtual size_t write(const char *str) {
       if (str == NULL) return 0;
       return write((const uint8_t *)str, strlen(str));
     }
     virtual size_t write(const uint8_t *buffer, size_t size);
-    size_t write(const char *buffer, size_t size) {
+    virtual size_t write(const char *buffer, size_t size) {
       return write((const uint8_t *)buffer, size);
     }
+
+
 
     // default to zero, meaning "a single write may block"
     // should be overriden by subclasses with buffering
     virtual int availableForWrite() { return 0; }
 
-    size_t print(const __FlashStringHelper *);
-    size_t print(const String &);
+    //size_t print(const __FlashStringHelper *);
+    //size_t print(const String &);  //  Removed by Michael since String is Arduino type
     size_t print(const char[]);
     size_t print(char);
     size_t print(unsigned char, int = DEC);
@@ -74,8 +78,8 @@ class Print
     size_t print(double, int = 2);
     size_t print(const Printable&);
 
-    size_t println(const __FlashStringHelper *);
-    size_t println(const String &s);
+    //size_t println(const __FlashStringHelper *);
+    //size_t println(const String &s);  //  Removed by Michael since String is Arduino type
     size_t println(const char[]);
     size_t println(char);
     size_t println(unsigned char, int = DEC);

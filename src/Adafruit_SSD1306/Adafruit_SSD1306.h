@@ -16,13 +16,17 @@ BSD license, check license.txt for more information
 All text above, and the splash screen must be included in any redistribution
 *********************************************************************/
 
+#define ARDUINO = 180  // added by Michael
+
+/* removed by Michael
 #if ARDUINO >= 100
  #include "Arduino.h"
 #else
  #include "WProgram.h"
 #endif
+*/
 
-#include <Adafruit_GFX.h>
+#include <../Adafruit_GFX_Library/Adafruit_GFX.h>
 
 #define BLACK 0
 #define WHITE 1

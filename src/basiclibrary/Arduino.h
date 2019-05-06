@@ -61,9 +61,12 @@ THE SOFTWARE.
                                    g_ioport.p_api->pinWrite(LED3R, IOPORT_LEVEL_HIGH);\
                                     __BKPT();}
 
+#define _BV(x)   (1 << x)
 
 typedef enum { INPUT=0, OUTPUT, INPUT_PULLUP } gpio_mode_t;
 typedef enum { FALLING = 0, RISING, CHANGE, LOW_LEVEL  } interrupt_trigger_t;
+
+typedef char __FlashStringHelper;
 
 /*Renesas S5D9 MCU
  *
@@ -78,7 +81,7 @@ typedef enum { FALLING = 0, RISING, CHANGE, LOW_LEVEL  } interrupt_trigger_t;
 
 typedef unsigned char   byte;
 typedef uint16_t        word;
-
+typedef bool            boolean;
 
 #define HIGH 1
 #define LOW  0

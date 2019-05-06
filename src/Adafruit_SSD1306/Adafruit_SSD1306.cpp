@@ -17,14 +17,21 @@ All text above, and the splash screen below must be included in any redistributi
 *********************************************************************/
 
 
+/*  removed by Michael
 #include <avr/pgmspace.h>
 #include <util/delay.h>
+*/
+
 #include <stdlib.h>
+#include <Wire1.h>
 
-#include <Wire.h>
-
-#include "Adafruit_GFX.h"
+//#include <Adafruit_GFX.h>
 #include "Adafruit_SSD1306.h"
+
+#include "Arduino.h"  // added by Michael
+// use this declaration for two i2c devices that share the same i2c port.
+extern  WIRE1 Wire;  // grove i2c port
+//extern WIRE Wire;  // Arduino header port ADC4/ADC5
 
 // the memory buffer for the LCD
 
@@ -160,6 +167,7 @@ void Adafruit_SSD1306::begin(uint8_t vccstate, uint8_t i2caddr) {
   if (sid != -1)
   {
     // SPI
+    /*  Removed by Michael (not SPI device)
     pinMode(sid, OUTPUT);
     pinMode(sclk, OUTPUT);
     pinMode(dc, OUTPUT);
@@ -172,6 +180,7 @@ void Adafruit_SSD1306::begin(uint8_t vccstate, uint8_t i2caddr) {
     cspinmask   = digitalPinToBitMask(cs);
     dcport      = portOutputRegister(digitalPinToPort(dc));
     dcpinmask   = digitalPinToBitMask(dc);
+    */
   }
   else
   {
@@ -426,9 +435,9 @@ void Adafruit_SSD1306::display(void) {
   }
   else
   {
-    // save I2C bitrate
-    uint8_t twbrbackup = TWBR;
-    TWBR = 12; // upgrade to 400KHz!
+    // save I2C bitrate  (removed by Michael)
+    // uint8_t twbrbackup = TWBR;
+    // TWBR = 12; // upgrade to 400KHz!
 
     //Serial.println(TWBR, DEC);
     //Serial.println(TWSR & 0x3, DEC);
@@ -459,7 +468,7 @@ void Adafruit_SSD1306::display(void) {
 	Wire.endTransmission();
       }
     }
-    TWBR = twbrbackup;
+    // TWBR = twbrbackup;  // removed by Michael
   }
 }
 

@@ -60,6 +60,7 @@ volatile static uint8_t datacount1 = 0;
 #ifndef FORMAT_H_
 #define FORMAT_H_
 typedef enum { DEC=0, HEX, OCT, BIN } format_t;
+//typedef enum { DEC=10, HEX=16, OCT=8, BIN=2 } format_t;
 #endif
 
 class SERIAL1 {

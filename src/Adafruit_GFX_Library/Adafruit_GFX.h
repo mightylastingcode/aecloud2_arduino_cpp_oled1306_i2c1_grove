@@ -1,14 +1,19 @@
 #ifndef _ADAFRUIT_GFX_H
 #define _ADAFRUIT_GFX_H
 
+#define ARDUINO  180  // added by Michael
+
+/* removed by Michael
 #if ARDUINO >= 100
  #include "Arduino.h"
  #include "Print.h"
 #else
  #include "WProgram.h"
 #endif
+*/
 #include "gfxfont.h"
-
+#include <Print.h>   // added by Michael
+#include <Arduino.h>  // added by Michael for boolean type
 class Adafruit_GFX : public Print {
 
  public:
